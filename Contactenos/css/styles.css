@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1{
+    font-family: 'Anton', sans-serif;
+    margin-bottom: 15px;
+}
+
+
+form#contactus{
+    padding: 100px 20px;
+    width: 40%;
+    text-align: center;
+}
+
+img{
+    padding: 30px 30px;
+    width: 50vw;
+    height: 90vh;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.input-style{
+    font-size: 15px;
+    padding: 10px 10px;
+    margin: 5px 10px;
+    width: 250px;
+    border-radius: 15px;
+    border: 2px solid gray;
+}
+
+.btn-enviar{
+    background-color: #FE0000;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px 5px;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.btn-limpiar{
+    background-color: #1A9B00;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px 5px;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.vacio{
+    border: 2px solid #FE0000;
+}

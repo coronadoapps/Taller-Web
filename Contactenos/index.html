@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>Contáctenos</title>
+</head>
+<body onload="main()">
+    <div class="container">
+        <form id="contactus">
+            <h1>Contáctenos</h1>
+            <input class="input-style" type="text" id="name" name="Nombre" placeholder="Nombre"><br>
+            <input class="input-style" type="email" id="email" name="Email" placeholder="Email"><br>
+            <input class="input-style" type="text" id="subject" name="Asunto" placeholder="Asunto"><br>
+            <textarea class="input-style" name="Mensaje" id="message" rows="7" placeholder="Mensaje"></textarea><br>
+            <input class="btn-enviar" type="submit" value="Enviar">
+            <input class="btn-limpiar" type="button" onclick="limpiar_form()" value="Limpiar">
+        </form>
+        <img src="./img/isometric-office-worker.jpg" alt="isometric-office-worker">
+    </div>
+</body>
+</html>
