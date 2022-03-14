@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Mi Portafolio</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">
+        <img height="30px" src="../img/portfolio.png" alt="portfolio icon">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+      <div class="row">
+          <p class="h4 text-center">Taller #3: Ciclos</p> 
+          <p class="h5">
+            <strong>Enunciado 6:</strong>
+            Se está creando una aplicación que va a estar conectada con un prototipo que permita
+            almacenar contactos telefónicos en el dispositivo. Para ello cada contacto debe contener
+            nombre completo, teléfono y organización. Se requiere que la aplicación permita añadir 3
+            contactos verificando que el número no esté almacenado, buscar contactos almacenados y
+            eliminar contactos si el usuario lo requiere. Recuerde que el sistema debe terminar cuando
+            el usuario así lo indique.
+          </p>
+      </div>
+      <hr>
+      <div class="row mt-5">
+        <div class="card w-75 mx-auto">
+            <div class="card-body">
+              <h5 class="card-title">Código de solución: </h5>
+              <p class="card-text">
+                <pre>
+package com.sofka.Punto6;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Punto6 {
+    
+    public String[] contactos = {"","",""};
+    public String[] telefonos = {"","",""};
+    public String[] organizacion = {"","",""};
+    private boolean continuar = true;
+    private int opcion;
+
+    public void Punto6() throws IOException{
+        Enunciado();
+        presioneCualquierTeclaParaContinuar();
+        do {
+            limpiarPantalla();
+            Menu();
+            opcion = capturarOpcion();
+            limpiarPantalla();
+            continuar = evaluarOpcion(opcion, contactos, telefonos, organizacion);
+            presioneCualquierTeclaParaContinuar();
+        } while (continuar);
+    }
+
+    private static boolean evaluarOpcion(int opcion, String[] contactos, String[] telefonos, String[] organizacion) throws IOException{
+        switch(opcion){
+            case 1:
+                agregarContacto(contactos, telefonos, organizacion);
+                return true;
+            case 2:
+                buscarContacto(contactos, telefonos, organizacion);
+                return true;
+            case 3: 
+                eliminarContacto(contactos, telefonos, organizacion);
+                return true;
+            case 0:
+                return false;
+            default:
+                System.out.println("Opción incorrecta");
+        }
+        return true;
+    }
+
+    private static void agregarContacto(String[] contactos, String[] telefonos, String[] organizacion){
+        System.out.println("Agregar un nuevo contacto---");
+        solicitarDato("el nombre del nuevo contacto");
+        String aux = capturarDatoString();
+        int indice = verificarContacto(contactos, aux);
+        if (indice == -1) {
+            boolean guardado = false;
+            for (int i = 0; i < contactos.length; i++) {
+                if (contactos[i] == "") {
+                    contactos[i] = aux;
+                    solicitarDato("el telefono del nuevo contacto");
+                    telefonos[i] = capturarDatoString();
+                    solicitarDato("el nombre de organizacion del nuevo contacto");
+                    organizacion[i] = capturarDatoString();
+                    guardado = true;
+                    break;
+                }
+            }
+            if (guardado) {
+                System.out.println("Contacto guardado correctamente!!");
+            }else{
+                System.out.println("Agenda de contactos llena.");
+            }
+        } else {
+            System.out.println("El contacto ya se encuetra almacenado.");
+        }
+    }
+
+    private static void buscarContacto(String[] contactos, String[] telefonos, String[] organizacion){
+        System.out.println("Buscar contacto en agenda---");
+        solicitarDato("el nombre del contacto que desea buscar");
+        String aux = capturarDatoString();
+        int indice = verificarContacto(contactos, aux);
+        if (indice != -1) {
+            System.out.println("");
+            System.out.println("Contacto encontrado: ");
+            System.out.println("- Nombre: " + contactos[indice] + ", Tel: " + telefonos[indice] + ", Org: " + organizacion[indice]);
+        } else {
+            System.out.println("El contacto no se encuetra almacenado en agenda.");
+        }
+    }
+
+    private static void eliminarContacto(String[] contactos, String[] telefonos, String[] organizacion){
+        System.out.println("Eliminar contacto en agenda---");
+        solicitarDato("el nombre del contacto que desea eliminar");
+        String aux = capturarDatoString();
+        int indice = verificarContacto(contactos, aux);
+        if (indice != -1) {
+            System.out.println("");
+            System.out.println("Contacto a eliminar: ");
+            System.out.println("- Nombre: " + contactos[indice] + ", Tel: " + telefonos[indice] + ", Org: " + organizacion[indice]);
+            contactos[indice]="";telefonos[indice]="";organizacion[indice]="";
+            System.out.println("Contacto eliminado correctamente!");
+        } else {
+            System.out.println("El contacto no se encuetra almacenado en agenda.");
+        }
+    }
+
+    private static int verificarContacto(String[] contactos, String aux){
+        int indice = -1; //indice -1 indica que no existe el contacto en la agenda.
+        for (int i = 0; i < contactos.length; i++) {
+            if (aux.toLowerCase().equals(contactos[i].toLowerCase())) {
+                indice = i;
+                break;
+            }
+        }
+        return indice;
+    }
+
+    private static void Enunciado(){
+        System.out.println("6. Se está creando una aplicación que va a estar conectada con un prototipo que permita almacenar contactos telefónicos en el dispositivo. Para ello cada contacto debe contener nombre completo, teléfono y organización. Se requiere que la aplicación permita añadir 3 contactos verificando que el número no esté almacenado, buscar contactos almacenados y eliminar contactos si el usuario lo requiere. Recuerde que el sistema debe terminar cuando el usuario así lo indique.");
+    }
+    
+    public static void Menu(){
+        System.out.println("Mi agenda telefónica---");
+        System.out.println("1. Agregar nuevo contacto");
+        System.out.println("2. Buscar contacto almacenado");
+        System.out.println("3. Eliminar contacto almacenado");
+        System.out.println("0. Salir de la aplicación");
+    }
+
+    private static void limpiarPantalla() {
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    }
+
+    private static int capturarOpcion() {
+        Scanner input = new Scanner(System.in);
+        return input.nextInt();
+    }
+    
+    private static void presioneCualquierTeclaParaContinuar() { 
+        System.out.println("Presione cualquier tecla para continuar...");
+        try
+        {
+            System.in.read();
+        }  
+        catch(Exception e)
+        {}  
+    }
+
+    public static void solicitarDato(String dato){
+        System.out.println("Por favor ingrese " + dato);
+    }
+
+    private static String capturarDatoString(){
+        Scanner input = new Scanner(System.in);
+        return input.nextLine();
+    }
+}
+                </pre>
+              </p>
+            </div>
+          </div>
+      </div>
+      <br><br><br>
+  </div>
+</body>
+
+</html>

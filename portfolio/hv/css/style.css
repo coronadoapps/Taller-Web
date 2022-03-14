@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+:root{
+    --primary-color: gold;
+    --secondary-color: #90ADC6;
+    --background-color: #ECF1F2;
+    --text-color: #333652;
+}
+
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#nav{
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: var(--secondary-color);
+}
+
+#navbar{
+    list-style-type: none;
+    overflow: hidden;
+}
+
+ul#navbar li {
+    float:right;
+}
+
+ul#navbar li a {
+    display: block;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    font-weight:bold;
+    padding: 5px;
+    margin: 15px 15px;
+    text-decoration: none;
+}
+
+ul#navbar li a:hover{
+    background-color: var(--primary-color);
+    color: whitesmoke;
+}
+
+#titulo a{
+    float: left;
+    margin-top: 8px;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight:bold;
+    border-radius: 5px;
+    margin-left: 100px;
+}
+
+#titulo a:hover{
+    color: var(--primary-color);
+}
+
+#footer{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: var(--secondary-color);;
+}
+
+#contacto{
+    padding: 8px;
+    margin-left: 100px;
+}
+
+#enlaces a{
+    display: block;
+    margin: 10px 100px;
+    text-decoration: none;
+    padding: 5px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-weight:bold;
+    border-radius: 5px;
+}
+
+#enlaces a:hover{
+    color: whitesmoke;
+}
+
+#contenido{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 20px auto;
+    width: 80%;
+}
+
+#info{
+    margin: 10px 10px;
+}
+
+#foto img{
+    margin: 30px;
+    width: 250px;
+    height: 250px;
+    border-radius: 40px;
+    border: 10px solid var(--primary-color);
+    box-shadow: 10px 10px 5px var(--secondary-color);
+}
+
+#tema1{
+    background-color: gold;
+    color: black;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+#tema2{
+    background-color: limegreen;
+    color: black;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+#tema3{
+    background-color: purple;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid black;
+}
