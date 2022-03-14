@@ -1,0 +1,74 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    color: blue;
+    text-decoration: underline;
+}
+
+button#tema1{
+    font-weight: bold;
+    background-color: gold;
+    border-radius: 5px 10px;
+    margin-right: 5px;
+    padding: 0px 15px;
+}
+
+button#tema1:hover, button#tema2:hover{
+    background-color: blue;
+    color: #f5f5f5;
+}
+
+button#tema2{
+    font-weight: bold;
+    background-color: lime;
+    border-radius: 5px 10px;
+    margin-left: 5px;
+    padding: 0px 15px;
+}
+
+.container{
+    background-color: #f5f5f5;
+    color: black;
+    width: 700px;
+    border-radius: 15px 50px;
+    border: 5px solid aqua;
+}
+
+nav{
+    text-align: center;
+}
+
+ol#lista_frutas{
+    list-style-type: upper-roman;
+}
+
+ol#lista_frutas li{
+    text-align: center;
+    padding: 0px 15px;
+    margin: 0px 100px;
+}
+
+.resaltar{
+    background-color: aqua;
+    border: 2px solid blue;
+    color: black;
+    font-weight: bold;
+}
+
+p#pie{
+    text-align: center;
+    font-weight: bold;
+    color: purple;
+}
+
+#pie a:hover{
+    color: blue;
+}
